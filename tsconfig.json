@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+      "target": "es5", // Specify the target version
+      "module": "esnext", // Specify the module system
+      "moduleResolution": "node", // Specify the module resolution strategy
+      "lib": [
+        "dom",
+        "esnext"
+      ] , // List of library files to be included. E.g. If target is older version with no Promise support, need to specify ES2015 here
+      "jsx": "react-jsx", // Using react only will support jsx in tsx files. With react-jsx, React import in each component is not required (JSX Transform)
+      "noEmit": true, // Typescript is only used for type checking and not compiling, since we have Babel
+      // "isolatedModules": true, // This requires all files to be modules
+      "esModuleInterop": true, // Helps resolve issue with default import
+      "strict": true, // Enables strict type-checking
+      "skipLibCheck": true, // Skips type-checking for declaration files
+      "forceConsistentCasingInFileNames": true, // Does not allow different casing for files (like during import)
+      "resolveJsonModule": true // Allows importing modules for json files
+    },
+    "include": ["src/**/*"], // Include files in the src folder
+}
