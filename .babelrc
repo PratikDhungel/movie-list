@@ -8,5 +8,13 @@
         }
       ],
       "@babel/preset-typescript"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-transform-runtime", // This will remove the runtime error while using async await
+        {
+          "regenerator": true
+        }
+      ]
     ]
 }
