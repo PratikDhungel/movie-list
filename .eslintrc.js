@@ -29,6 +29,7 @@ module.exports = {
     'react/jsx-no-duplicate-props': 'error', // Does not allow duplicate props
     'react/react-in-jsx-scope': 'off', // Ignores if React is not imported in jsx files
     '@typescript-eslint/explicit-module-boundary-types': 'off', // Remove error when return type is not explicitly defined
+    '@typescript-eslint/no-explicit-any': 'off', // Allow the set a variable of type any
   },
   settings: {
     react: {
