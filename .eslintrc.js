@@ -25,7 +25,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'warn', // Throw error if unused variable present
     '@typescript-eslint/no-var-requires': 'off', // Allows the use of require statements
     'react/jsx-key': 'warn', // Warn for missing key prop
-    // 'react/prop-types': 'off',
+    'react/prop-types': 'off', // Not required since we are using Typescript
     'react/jsx-no-duplicate-props': 'error', // Does not allow duplicate props
     'react/react-in-jsx-scope': 'off', // Ignores if React is not imported in jsx files
     '@typescript-eslint/explicit-module-boundary-types': 'off', // Remove error when return type is not explicitly defined

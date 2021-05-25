@@ -1,8 +1,10 @@
-const movieIds = ['tt0816692', 'tt2380307', 'tt1447500'];
-
 import { useEffect, useState } from 'react';
-import { IMovieList, IMovieListStates, IMovieListApi } from '../interfaces/movie-list';
+
+import MovieCard from './MovieCard';
 import { handleGetMethod } from '../http/http-services';
+import { IMovieList, IMovieListStates, IMovieListApi } from '../interfaces/movie-list';
+
+const movieIds = ['tt0816692', 'tt2380307', 'tt1447500'];
 
 const movieListStateDefaultValues: IMovieListStates = {
   isLoading: false,
@@ -32,7 +34,6 @@ const App = () => {
         const { Title, Genre, Director, Plot, Poster } = movie;
         return { title: Title, genre: Genre, director: Director, plot: Plot, poster: Poster };
       });
-      console.log(tempData);
       setMovieList(tempData);
       setMovieListStates({ ...movieListStates, isLoading: false, isSuccess: true });
     } catch (err) {
@@ -46,8 +47,11 @@ const App = () => {
   }, []);
 
   return (
-    <div>
-      <h1>This is the Homepage Component..</h1>
+    <div className="movie-list-container">
+      {movieList.map((movie, index) => {
+        const { title, genre, director, poster, plot } = movie;
+        return <MovieCard title={title} genre={genre} director={director} poster={poster} plot={plot} key={index} />;
+      })}
     </div>
   );
 };
