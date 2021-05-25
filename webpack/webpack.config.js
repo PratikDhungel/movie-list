@@ -1,4 +1,5 @@
 const path = require('path');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -17,6 +18,10 @@ module.exports = {
           },
         ],
       }, // Use babel for all ts, js, tsx ans jsx files
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'], // Rule added to load CSS files. Order of style-loader and css-loader cannot be swapped
+      },
     ],
   },
   output: {
@@ -25,12 +30,14 @@ module.exports = {
   },
   mode: 'development',
   devServer: {
+    hot: true,
     port: 3000,
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../src/index.html'),
     }),
+    new ReactRefreshWebpackPlugin(), // Plugin to hot reload react components
   ], // Injects the bundle js file into the index html file and place the html file in the build folder
   stats: 'errors-only',
 };
