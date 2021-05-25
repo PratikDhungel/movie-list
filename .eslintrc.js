@@ -22,7 +22,7 @@ module.exports = {
   ],
   // Use the rules from these added plugins
   rules: {
-    '@typescript-eslint/no-unused-vars': 'error', // Throw error if unused variable present
+    '@typescript-eslint/no-unused-vars': 'warn', // Throw error if unused variable present
     '@typescript-eslint/no-var-requires': 'off', // Allows the use of require statements
     'react/jsx-key': 'warn', // Warn for missing key prop
     // 'react/prop-types': 'off',

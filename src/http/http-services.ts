@@ -1,6 +1,6 @@
 import axiosClient from './axios-client';
 
-export const handleGetMethod = async (endPoint: any, apiConfig: any) => {
+export const handleGetMethod = async (endPoint: string, apiConfig: any) => {
   const apiResponse = await axiosClient.get(endPoint, apiConfig);
   return apiResponse;
 };

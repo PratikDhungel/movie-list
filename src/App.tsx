@@ -1,7 +1,9 @@
+import Homepage from './components/Homepage';
+
 const App = () => {
   return (
     <div>
-      <h1>This is the App Component..</h1>
+      <Homepage />
     </div>
   );
 };
