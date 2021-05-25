@@ -17,6 +17,8 @@ module.exports = {
     'plugin:import/warnings',
     'plugin:import/typescript',
     'plugin:jsx-a11y/recommended', // Check for accessibility rules in JSX??
+    'prettier',
+    'plugin:prettier/recommended',
   ],
   // Use the rules from these added plugins
   rules: {
