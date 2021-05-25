@@ -37,7 +37,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../src/index.html'),
     }),
-    // new ReactRefreshWebpackPlugin(), // Plugin to hot reload react components
+    new ReactRefreshWebpackPlugin(), // Plugin to hot reload react components
   ], // Injects the bundle js file into the index html file and place the html file in the build folder
   stats: 'errors-only',
 };
