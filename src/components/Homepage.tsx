@@ -57,6 +57,7 @@ const Homepage = () => {
 
   return (
     <div className="movie-list-container">
+      <h1>Setup using github actions</h1>
       {isLoading ? (
         <Loader />
       ) : (
