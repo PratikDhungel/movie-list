@@ -1,4 +1,4 @@
 // List of external endpoints used
 export const endpoints = {
-  fetchMovieDetailEndpoint: 'http://www.omdbapi.com/',
+  fetchMovieDetailEndpoint: 'https://www.omdbapi.com/',
 };
