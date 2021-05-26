@@ -69,6 +69,8 @@ p {
 
 .card-dropdown__add-favorite {
   text-transform: uppercase;
+  padding: 8px 20px !important;
+  border-radius: 8px !important;
 }
 
 .modal-dialog {

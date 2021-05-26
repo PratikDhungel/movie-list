@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Button, Modal } from 'react-bootstrap';
 
+import { errorToast, successToast } from '../utils';
 import { IMovieList } from '../interfaces/movie-list';
+import { addToFavorite } from '../mock-api/add-to-favorite';
 import getDirectorData from '../mock-api/get-director-data';
 import { IDirectorData } from '../interfaces/director-data';
 
@@ -29,8 +31,18 @@ const MovieCard: React.FC<IMovieList> = (props) => {
     setDisplayDetail((previous) => !previous);
   };
 
-  const handleAddToFavorite = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleAddToFavorite = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
+    try {
+      const response = await addToFavorite();
+      if (response.success) {
+        const successMessage = `${title} added to favorites`;
+        successToast(successMessage);
+      }
+    } catch (err) {
+      console.log(err.message);
+      errorToast(err.message);
+    }
   };
 
   const fetchDirectorData = async () => {
