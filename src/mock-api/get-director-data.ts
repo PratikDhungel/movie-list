@@ -1,5 +1,8 @@
 import { IDirectorDataCollection } from '../interfaces/director-data';
 
+// Static data object with individual director data
+// Director data is mapped to the movie id
+
 const directorData: IDirectorDataCollection = {
   tt0816692: {
     directorName: 'Christopher Nolan',
@@ -22,6 +25,7 @@ const directorData: IDirectorDataCollection = {
 };
 
 const getDirectorData = (movieId: string) => {
+  // Use movieId as the type which corresponds to the key of the Interface for list of director data object
   const data = directorData[movieId as keyof IDirectorDataCollection];
   return Promise.resolve({ data: data });
 };

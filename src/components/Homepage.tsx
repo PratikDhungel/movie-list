@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 
 import MovieCard from './MovieCard';
 import Loader from './Loader';
-import { handleGetMethod } from '../http/http-services';
+import { fetchMovieData } from '../services/movie-list-services';
 import { IMovieList, IMovieListStates, IMovieListApi } from '../interfaces/movie-list';
+import { errorToast, successToast } from '../utils';
 
 const movieIds = ['tt0816692', 'tt2380307', 'tt1447500'];
 
@@ -20,14 +21,16 @@ const App = () => {
 
   const movieListApiData: IMovieListApi[] = [];
 
+  // fetchMovieList will fetch data for each movie from the API
+  // API response has some extra data fields so it will be filtered out and will set movieList
+
   const fetchMovieList = async () => {
     try {
       setMovieListStates({ ...movieListStates, isLoading: true });
       const movieListLength = movieIds.length;
       for (let i = 0; i < movieListLength; i++) {
         const movieId = movieIds[i];
-        const apiUrl = `http://www.omdbapi.com/?i=${movieId}&apikey=9e7e2477`;
-        const response = await handleGetMethod(apiUrl, {});
+        const response = await fetchMovieData(movieId);
         movieListApiData.push(response.data);
       }
 
@@ -37,14 +40,17 @@ const App = () => {
         const singleDirector = Director.split(',')[0];
         return { id: imdbID, title: Title, genre: singleGenre, director: singleDirector, plot: Plot, poster: Poster };
       });
+      successToast('Successfully fetched movie list');
       setMovieList(tempData);
       setMovieListStates({ ...movieListStates, isLoading: false, isSuccess: true });
     } catch (err) {
       setMovieListStates({ ...movieListStates, isLoading: false, isSuccess: false, isError: true });
+      errorToast('Error while fetching movie list');
       console.log(err);
     }
   };
 
+  // API call will be made only when the component is mounted
   useEffect(() => {
     fetchMovieList();
   }, []);

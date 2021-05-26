@@ -1,3 +1,4 @@
+// Interface for movie card object used in each MovieCard component
 export interface IMovieList {
   id: string;
   title: string;
@@ -7,12 +8,14 @@ export interface IMovieList {
   poster: string;
 }
 
+// Interface to handle state of movie list in Homepage
 export interface IMovieListStates {
   isLoading: boolean;
   isSuccess: boolean;
   isError: boolean;
 }
 
+// Interface for the API response from OMDB movie API
 export interface IMovieListApi {
   Title: string;
   Year: string;

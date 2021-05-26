@@ -22,15 +22,19 @@ const MovieCard: React.FC<IMovieList> = (props) => {
 
   const { directorName, imageUrl, info } = directorData;
 
+  // handleDirectorNameClick will set the flag to true so that the Modal is displayed
   const handleDirectorNameClick = (e: React.MouseEvent<HTMLParagraphElement>) => {
     e.stopPropagation();
     setShowDirectorModal(!showDirectorModal);
   };
 
+  // toggleAccordion will handle the show/hide mechanism of the accordion with the movie details and Favorite button
   const toggleAccordion = () => {
     setDisplayDetail((previous) => !previous);
   };
 
+  // handelAddToFavorite will call a mock API which will return success or error based on chance
+  // Success and Error toast will be displayed accordingly
   const handleAddToFavorite = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     try {
@@ -45,6 +49,8 @@ const MovieCard: React.FC<IMovieList> = (props) => {
     }
   };
 
+  // fetchDirectorData will call a mock API to fetch the director data from static object
+  // This has no fail case and always returns the data
   const fetchDirectorData = async () => {
     try {
       const response = await getDirectorData(id);
@@ -54,6 +60,7 @@ const MovieCard: React.FC<IMovieList> = (props) => {
     }
   };
 
+  // Mock API call will be made only when the component is mounted
   useEffect(() => {
     fetchDirectorData();
   }, []);
@@ -82,6 +89,7 @@ const MovieCard: React.FC<IMovieList> = (props) => {
           </Row>
         </div>
       </Container>
+      {/* Modal to display the details of the Director */}
       <Modal
         show={showDirectorModal}
         keyboard={true}
