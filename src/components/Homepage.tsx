@@ -14,7 +14,7 @@ const movieListStateDefaultValues: IMovieListStates = {
   isSuccess: false,
 };
 
-const App = () => {
+const Homepage = () => {
   const [movieList, setMovieList] = useState<IMovieList[]>([]);
   const [movieListStates, setMovieListStates] = useState<IMovieListStates>(movieListStateDefaultValues);
   const { isLoading, isSuccess, isError } = movieListStates;
@@ -71,4 +71,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Homepage;
