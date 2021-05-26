@@ -1,4 +1,5 @@
 export interface IMovieList {
+  id: string;
   title: string;
   genre: string;
   director: string;

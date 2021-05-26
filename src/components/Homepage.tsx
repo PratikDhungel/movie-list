@@ -31,10 +31,10 @@ const App = () => {
       }
 
       const tempData: IMovieList[] = movieListApiData.map((movie) => {
-        const { Title, Genre, Director, Plot, Poster } = movie;
+        const { Title, Genre, Director, Plot, Poster, imdbID } = movie;
         const singleGenre = Genre.split(',')[0];
         const singleDirector = Director.split(',')[0];
-        return { title: Title, genre: singleGenre, director: singleDirector, plot: Plot, poster: Poster };
+        return { id: imdbID, title: Title, genre: singleGenre, director: singleDirector, plot: Plot, poster: Poster };
       });
       setMovieList(tempData);
       setMovieListStates({ ...movieListStates, isLoading: false, isSuccess: true });
@@ -51,8 +51,8 @@ const App = () => {
   return (
     <div className="movie-list-container">
       {movieList.map((movie, index) => {
-        const { title, genre, director, poster, plot } = movie;
-        return <MovieCard title={title} genre={genre} director={director} poster={poster} plot={plot} key={index} />;
+        const { id, title, genre, director, poster, plot } = movie;
+        return <MovieCard id={id} title={title} genre={genre} director={director} poster={poster} plot={plot} key={index} />;
       })}
     </div>
   );

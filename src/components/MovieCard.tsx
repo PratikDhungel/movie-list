@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Container, Row, Col, Button, Modal } from 'react-bootstrap';
+
 import { IMovieList } from '../interfaces/movie-list';
+import getDirectorData from '../mock-api/get-director-data';
+import { IDirectorData } from '../interfaces/director-data';
+
+const defaultDirectorData: IDirectorData = {
+  directorName: 'N/A',
+  imageUrl: 'N/A',
+  info: 'N/A',
+};
 
 const MovieCard: React.FC<IMovieList> = (props) => {
-  const { title, genre, director, poster, plot } = props;
+  const { id, title, genre, director, poster, plot } = props;
 
   const [displayDetail, setDisplayDetail] = useState<boolean>(false);
   const [showDirectorModal, setShowDirectorModal] = useState<boolean>(false);
+  const [directorData, setDirectorData] = useState<IDirectorData>(defaultDirectorData);
+
+  const { directorName, imageUrl, info } = directorData;
 
   const handleDirectorNameClick = (e: React.MouseEvent<HTMLParagraphElement>) => {
     e.stopPropagation();
@@ -17,13 +29,22 @@ const MovieCard: React.FC<IMovieList> = (props) => {
     setDisplayDetail((previous) => !previous);
   };
 
-  // const handleDirectorNameClick = () => {
-  //   console.log('Hello');
-  // };
-
   const handleAddToFavorite = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
   };
+
+  const fetchDirectorData = async () => {
+    try {
+      const response = await getDirectorData(id);
+      setDirectorData(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchDirectorData();
+  }, []);
 
   return (
     <div>
@@ -43,10 +64,27 @@ const MovieCard: React.FC<IMovieList> = (props) => {
             {plot}
           </Row>
           <Row noGutters className="card-dropdown-container-item">
-            <Button onClick={handleAddToFavorite}>ADD TO FAVORITE</Button>
+            <Button onClick={handleAddToFavorite} className="card-dropdown__add-favorite">
+              Add to Favorite
+            </Button>
           </Row>
         </div>
       </Container>
+      <Modal
+        show={showDirectorModal}
+        keyboard={true}
+        onHide={() => setShowDirectorModal(false)}
+        centered
+        className="director-modal"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>{directorName}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <img src={imageUrl} alt="" className="director-modal__director-image" />
+          <p className="director-modal__director-text">{info}</p>
+        </Modal.Body>
+      </Modal>
     </div>
   );
 };
