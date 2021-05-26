@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import MovieCard from './MovieCard';
+import Loader from './Loader';
 import { handleGetMethod } from '../http/http-services';
 import { IMovieList, IMovieListStates, IMovieListApi } from '../interfaces/movie-list';
 
@@ -50,10 +51,16 @@ const App = () => {
 
   return (
     <div className="movie-list-container">
-      {movieList.map((movie, index) => {
-        const { id, title, genre, director, poster, plot } = movie;
-        return <MovieCard id={id} title={title} genre={genre} director={director} poster={poster} plot={plot} key={index} />;
-      })}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        movieList.map((movie, index) => {
+          const { id, title, genre, director, poster, plot } = movie;
+          return (
+            <MovieCard id={id} title={title} genre={genre} director={director} poster={poster} plot={plot} key={index} />
+          );
+        })
+      )}
     </div>
   );
 };
