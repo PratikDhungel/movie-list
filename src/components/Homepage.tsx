@@ -32,7 +32,9 @@ const App = () => {
 
       const tempData: IMovieList[] = movieListApiData.map((movie) => {
         const { Title, Genre, Director, Plot, Poster } = movie;
-        return { title: Title, genre: Genre, director: Director, plot: Plot, poster: Poster };
+        const singleGenre = Genre.split(',')[0];
+        const singleDirector = Director.split(',')[0];
+        return { title: Title, genre: singleGenre, director: singleDirector, plot: Plot, poster: Poster };
       });
       setMovieList(tempData);
       setMovieListStates({ ...movieListStates, isLoading: false, isSuccess: true });

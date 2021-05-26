@@ -30,6 +30,9 @@ module.exports = {
     'react/react-in-jsx-scope': 'off', // Ignores if React is not imported in jsx files
     '@typescript-eslint/explicit-module-boundary-types': 'off', // Remove error when return type is not explicitly defined
     '@typescript-eslint/no-explicit-any': 'off', // Allow the set a variable of type any
+    'jsx-a11y/click-events-have-key-events': 'off', // Following have been disabled to add click event on div/p elements
+    'jsx-a11y/no-noninteractive-element-interactions': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
   },
   settings: {
     react: {
