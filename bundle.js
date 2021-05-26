@@ -575,7 +575,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"endpoints\": () => (/* binding */ endpoints)\n/* harmony export */ });\n// List of external endpoints used\nvar endpoints = {\n  fetchMovieDetailEndpoint: 'http://www.omdbapi.com/'\n};\n\n//# sourceURL=webpack://movie-list-typescript/./src/constants/endpoints.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"endpoints\": () => (/* binding */ endpoints)\n/* harmony export */ });\n// List of external endpoints used\nvar endpoints = {\n  fetchMovieDetailEndpoint: 'https://www.omdbapi.com/'\n};\n\n//# sourceURL=webpack://movie-list-typescript/./src/constants/endpoints.ts?");
 
 /***/ }),
 
