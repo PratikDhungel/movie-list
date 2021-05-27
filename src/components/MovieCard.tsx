@@ -1,24 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col, Button, Modal } from 'react-bootstrap';
 
 import { errorToast, successToast } from '../utils';
-import { IMovieList } from '../interfaces/movie-list';
+import { IMovieCard } from '../interfaces/movie-list';
 import { addToFavorite } from '../mock-api/add-to-favorite';
-import getDirectorData from '../mock-api/get-director-data';
-import { IDirectorData } from '../interfaces/director-data';
 
-const defaultDirectorData: IDirectorData = {
-  directorName: 'N/A',
-  imageUrl: 'N/A',
-  info: 'N/A',
-};
-
-const MovieCard: React.FC<IMovieList> = (props) => {
-  const { id, title, genre, director, poster, plot } = props;
+const MovieCard: React.FC<IMovieCard> = (props) => {
+  const { id, title, genre, director, poster, plot, directorData } = props;
 
   const [displayDetail, setDisplayDetail] = useState<boolean>(false);
   const [showDirectorModal, setShowDirectorModal] = useState<boolean>(false);
-  const [directorData, setDirectorData] = useState<IDirectorData>(defaultDirectorData);
 
   const { directorName, imageUrl, info } = directorData;
 
@@ -48,22 +39,6 @@ const MovieCard: React.FC<IMovieList> = (props) => {
       errorToast(err.message);
     }
   };
-
-  // fetchDirectorData will call a mock API to fetch the director data from static object
-  // This has no fail case and always returns the data
-  const fetchDirectorData = async () => {
-    try {
-      const response = await getDirectorData(id);
-      setDirectorData(response.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  // Mock API call will be made only when the component is mounted
-  useEffect(() => {
-    fetchDirectorData();
-  }, []);
 
   return (
     <div>

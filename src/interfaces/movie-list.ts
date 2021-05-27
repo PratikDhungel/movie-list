@@ -1,11 +1,14 @@
+import { IDirectorData } from './director-data';
+
 // Interface for movie card object used in each MovieCard component
-export interface IMovieList {
+export interface IMovieCard {
   id: string;
   title: string;
   genre: string;
   director: string;
   plot: string;
   poster: string;
+  directorData: IDirectorData;
 }
 
 // Interface to handle state of movie list in Homepage
@@ -16,7 +19,7 @@ export interface IMovieListStates {
 }
 
 // Interface for the API response from OMDB movie API
-export interface IMovieListApi {
+export interface IMovieApiDirectorDataCombined {
   Title: string;
   Year: string;
   Rated: string;
@@ -42,4 +45,5 @@ export interface IMovieListApi {
   Production: string;
   Website: string;
   Response: string;
+  directorData: IDirectorData;
 }
