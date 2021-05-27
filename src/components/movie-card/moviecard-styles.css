@@ -1,0 +1,57 @@
+.movie-card {
+  padding: 12px !important;
+}
+
+.movie-card:hover {
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+.poster-container {
+  margin-right: -50px;
+}
+
+.poster-image {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.card-detail-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-detail-container__title {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.card-detail-container__genre {
+  color: #808080;
+}
+
+.card-dropdown-container {
+  max-height: 0px;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.7s ease;
+}
+
+.card-dropdown-container__active {
+  max-height: 1000px;
+  opacity: 1;
+  transition: all 0.7s ease;
+}
+
+.card-dropdown-container-item {
+  padding: 8px 0;
+}
+
+.card-dropdown__add-favorite {
+  text-transform: uppercase;
+  padding: 8px 20px !important;
+  border-radius: 8px !important;
+}

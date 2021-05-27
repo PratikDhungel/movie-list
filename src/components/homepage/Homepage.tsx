@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 
-import Loader from './Loader';
-import MovieCard from './MovieCard';
-import { errorToast, successToast } from '../utils';
-import getDirectorData from '../mock-api/get-director-data';
-import { IDirectorData } from '../interfaces/director-data';
-import { fetchMovieData } from '../services/movie-list-services';
-import { IMovieCard, IMovieListStates, IMovieApiDirectorDataCombined } from '../interfaces/movie-list';
+import './homepage-styles.css';
+import Loader from '../loader/Loader';
+import MovieCard from '../movie-card/MovieCard';
+import { errorToast, successToast } from '../../utils';
+import getDirectorData from '../../mock-api/get-director-data';
+import { IDirectorData } from '../../interfaces/director-data';
+import { fetchMovieData } from '../../services/movie-list-services';
+import { IMovieCard, IMovieListStates, IMovieApiDirectorDataCombined } from '../../interfaces/movie-list';
 
 const movieIds = ['tt0816692', 'tt2380307', 'tt1447500'];
 // 'tt0068646' -> ID for movie The Godfather (for tests)

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Button, Modal } from 'react-bootstrap';
 
-import { errorToast, successToast } from '../utils';
-import { IMovieCard } from '../interfaces/movie-list';
-import { addToFavorite } from '../mock-api/add-to-favorite';
+import './moviecard-styles.css';
+import { errorToast, successToast } from '../../utils';
+import { IMovieCard } from '../../interfaces/movie-list';
+import { addToFavorite } from '../../mock-api/add-to-favorite';
 
 const MovieCard: React.FC<IMovieCard> = (props) => {
   const { id, title, genre, director, poster, plot, directorData } = props;
