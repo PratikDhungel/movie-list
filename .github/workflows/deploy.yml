@@ -23,8 +23,3 @@ jobs:
           npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-
-        # git config --global user.email "your_github_email>"
-        # git config --global user.name "your_github_username>"
-        # git remote set-url origin https://your_personal_access_token>@github.com/your_github_username>/your_repo>.git
-        # npm run deploy
