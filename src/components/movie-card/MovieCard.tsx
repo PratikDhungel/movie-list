@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Button, Modal } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 
-import './moviecard-styles.css';
+import './movie-card-styles.css';
 import { errorToast, successToast } from '../../utils';
 import { IMovieCard } from '../../interfaces/movie-list';
 import { addToFavorite } from '../../mock-api/add-to-favorite';
+import DirectorModal from '../director-modal/DirectorModal';
 
 const MovieCard: React.FC<IMovieCard> = (props) => {
   const { id, title, genre, director, poster, plot, directorData } = props;
@@ -12,12 +13,16 @@ const MovieCard: React.FC<IMovieCard> = (props) => {
   const [displayDetail, setDisplayDetail] = useState<boolean>(false);
   const [showDirectorModal, setShowDirectorModal] = useState<boolean>(false);
 
-  const { directorName, imageUrl, info } = directorData;
+  // const { directorName, imageUrl, info } = directorData;
+
+  const toggleModal = () => {
+    setShowDirectorModal(!showDirectorModal);
+  };
 
   // handleDirectorNameClick will set the flag to true so that the Modal is displayed
   const handleDirectorNameClick = (e: React.MouseEvent<HTMLParagraphElement>) => {
     e.stopPropagation();
-    setShowDirectorModal(!showDirectorModal);
+    toggleModal();
   };
 
   // toggleAccordion will handle the show/hide mechanism of the accordion with the movie details and Favorite button
@@ -66,21 +71,7 @@ const MovieCard: React.FC<IMovieCard> = (props) => {
         </div>
       </Container>
       {/* Modal to display the details of the Director */}
-      <Modal
-        show={showDirectorModal}
-        keyboard={true}
-        onHide={() => setShowDirectorModal(false)}
-        centered
-        className="director-modal"
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>{directorName}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <img src={imageUrl} alt="" className="director-modal__director-image" />
-          <p className="director-modal__director-text">{info}</p>
-        </Modal.Body>
-      </Modal>
+      <DirectorModal directorData={directorData} showDirectorModal={showDirectorModal} toggleModal={toggleModal} />
     </div>
   );
 };

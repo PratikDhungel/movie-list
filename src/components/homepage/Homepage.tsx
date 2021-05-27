@@ -81,7 +81,6 @@ const Homepage = () => {
     } catch (err) {
       setMovieListStates({ ...movieListStates, isLoading: false, isSuccess: false, isError: true });
       errorToast('Error while fetching movie list');
-      console.log(err);
     }
   };
 

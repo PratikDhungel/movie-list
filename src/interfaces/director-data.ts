@@ -9,3 +9,9 @@ export interface IDirectorData {
 export interface IDirectorDataCollection {
   [key: string]: IDirectorData;
 }
+
+export interface IDirectorModalProps {
+  directorData: IDirectorData;
+  showDirectorModal: boolean;
+  toggleModal: () => void;
+}
