@@ -90,25 +90,34 @@ const Homepage = () => {
   }, []);
 
   return (
-    <div className="movie-list-container">
-      {isLoading ? (
-        <Loader />
+    <div>
+      {isError ? (
+        <div className="movie-list-container__error">
+          <p>Oops! Something went wrong</p>
+          <p>Please try reloading the page</p>
+        </div>
       ) : (
-        movieList.map((movie, index) => {
-          const { id, title, genre, director, poster, plot, directorData } = movie;
-          return (
-            <MovieCard
-              id={id}
-              title={title}
-              genre={genre}
-              director={director}
-              poster={poster}
-              plot={plot}
-              directorData={directorData}
-              key={index}
-            />
-          );
-        })
+        <div className="movie-list-container">
+          {isLoading ? (
+            <Loader containerHeight="522" />
+          ) : (
+            movieList.map((movie, index) => {
+              const { id, title, genre, director, poster, plot, directorData } = movie;
+              return (
+                <MovieCard
+                  id={id}
+                  title={title}
+                  genre={genre}
+                  director={director}
+                  poster={poster}
+                  plot={plot}
+                  directorData={directorData}
+                  key={index}
+                />
+              );
+            })
+          )}
+        </div>
       )}
     </div>
   );
