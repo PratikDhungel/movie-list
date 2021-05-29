@@ -26,7 +26,26 @@ test('Should render the MovieCard', () => {
   const movieGenre = getByTestId('card-detail-container__genre');
   const movieDirector = getByTestId('card-detail-container__director');
 
-  expect(movieTitle.textContent).toBe(movieCardTestData.title);
-  expect(movieGenre.textContent).toBe(movieCardTestData.genre);
-  expect(movieDirector.textContent).toBe(movieCardTestData.director);
+  expect(movieTitle.textContent).toBe(title);
+  expect(movieGenre.textContent).toBe(genre);
+  expect(movieDirector.textContent).toBe(director);
+});
+
+test('Should render the dropdown container in the Movie Card', () => {
+  const { getByTestId } = render(
+    <MovieCard
+      id={id}
+      title={title}
+      genre={genre}
+      director={director}
+      poster={poster}
+      plot={plot}
+      directorData={directorData}
+    />
+  );
+  const cardDropdownMoviePlot = getByTestId('card-dropdown-plot');
+  const cardDropdownAddToFavorite = getByTestId('card-dropdown-add-favorite-button');
+
+  expect(cardDropdownMoviePlot.textContent).toBe(movieCardTestData.plot);
+  expect(cardDropdownAddToFavorite.textContent).toBe('Add to Favorite');
 });

@@ -69,11 +69,15 @@ const MovieCard: React.FC<IMovieCard> = (props) => {
           className={`${displayDetail ? 'card-dropdown-container__active' : 'card-dropdown-container'}`}
           data-testid="movie-card__dropdown"
         >
-          <Row noGutters className="card-dropdown-container-item">
+          <Row noGutters className="card-dropdown-container-item" data-testid="card-dropdown-plot">
             {plot}
           </Row>
           <Row noGutters className="card-dropdown-container-item">
-            <Button onClick={handleAddToFavorite} className="card-dropdown__add-favorite">
+            <Button
+              onClick={handleAddToFavorite}
+              className="card-dropdown__add-favorite"
+              data-testid="card-dropdown-add-favorite-button"
+            >
               Add to Favorite
             </Button>
           </Row>
