@@ -14,7 +14,9 @@ const DirectorModal: React.FC<IDirectorModalProps> = (props) => {
       </Modal.Header>
       <Modal.Body>
         <img src={imageUrl} alt="" className="director-modal__director-image" />
-        <p className="director-modal__director-text">{info}</p>
+        <p className="director-modal__director-text" data-testid="director-modal__director-text">
+          {info}
+        </p>
       </Modal.Body>
     </Modal>
   );
