@@ -12,7 +12,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "test": "jest",
-    "test:watch": "yarn run jest -- --watch"
+    "test:watch": "yarn run jest --watchAll"
   },
   "keywords": [],
   "author": "",
