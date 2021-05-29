@@ -65,7 +65,10 @@ const MovieCard: React.FC<IMovieCard> = (props) => {
             </p>
           </Col>
         </Row>
-        <div className={`${displayDetail ? 'card-dropdown-container__active' : 'card-dropdown-container'}`}>
+        <div
+          className={`${displayDetail ? 'card-dropdown-container__active' : 'card-dropdown-container'}`}
+          data-testid="movie-card__dropdown"
+        >
           <Row noGutters className="card-dropdown-container-item">
             {plot}
           </Row>
