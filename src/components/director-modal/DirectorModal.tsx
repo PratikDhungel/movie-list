@@ -10,10 +10,10 @@ const DirectorModal: React.FC<IDirectorModalProps> = (props) => {
   return (
     <Modal show={showDirectorModal} keyboard={true} onHide={toggleModal} centered className="director-modal">
       <Modal.Header closeButton>
-        <Modal.Title>{directorName}</Modal.Title>
+        <Modal.Title data-testid="director-modal__director-name">{directorName}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <img src={imageUrl} alt="" className="director-modal__director-image" />
+        <img src={imageUrl} alt="" className="director-modal__director-image" data-testid="director-modal__director-image" />
         <p className="director-modal__director-text" data-testid="director-modal__director-text">
           {info}
         </p>
