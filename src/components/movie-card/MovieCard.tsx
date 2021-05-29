@@ -8,7 +8,7 @@ import { addToFavorite } from '../../mock-api/add-to-favorite';
 import DirectorModal from '../director-modal/DirectorModal';
 
 const MovieCard: React.FC<IMovieCard> = (props) => {
-  const { id, title, genre, director, poster, plot, directorData } = props;
+  const { title, genre, director, poster, plot, directorData } = props;
 
   const [displayDetail, setDisplayDetail] = useState<boolean>(false);
   const [showDirectorModal, setShowDirectorModal] = useState<boolean>(false);
@@ -51,12 +51,18 @@ const MovieCard: React.FC<IMovieCard> = (props) => {
       <Container fluid className="movie-card" onClick={toggleAccordion}>
         <Row noGutters>
           <Col className="poster-container">
-            <img src={poster} alt="Poster" className="poster-image" />
+            <img src={poster} alt="Poster" className="poster-image" data-testid="movie-card__poster-image" />
           </Col>
           <Col className="card-detail-container">
-            <p className="card-detail-container__title">{title}</p>
-            <p className="card-detail-container__genre">{genre}</p>
-            <p onClick={handleDirectorNameClick}>{director}</p>
+            <p className="card-detail-container__title" data-testid="card-detail-container__title">
+              {title}
+            </p>
+            <p className="card-detail-container__genre" data-testid="card-detail-container__genre">
+              {genre}
+            </p>
+            <p onClick={handleDirectorNameClick} data-testid="card-detail-container__director">
+              {director}
+            </p>
           </Col>
         </Row>
         <div className={`${displayDetail ? 'card-dropdown-container__active' : 'card-dropdown-container'}`}>
