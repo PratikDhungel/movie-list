@@ -102,19 +102,7 @@ const Homepage = () => {
             <Loader containerHeight="522" />
           ) : (
             movieList.map((movie, index) => {
-              const { id, title, genre, director, poster, plot, directorData } = movie;
-              return (
-                <MovieCard
-                  id={id}
-                  title={title}
-                  genre={genre}
-                  director={director}
-                  poster={poster}
-                  plot={plot}
-                  directorData={directorData}
-                  key={index}
-                />
-              );
+              return <MovieCard {...movie} key={index} />;
             })
           )}
         </div>
