@@ -1,6 +1,6 @@
 import './director-modal-styles.css';
 
-import { Modal } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 import { IDirectorModalProps } from '../../interfaces/director-data';
 
 const DirectorModal: React.FC<IDirectorModalProps> = (props) => {
@@ -18,6 +18,11 @@ const DirectorModal: React.FC<IDirectorModalProps> = (props) => {
           {info}
         </p>
       </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={toggleModal} data-testid="director-modal__close-button">
+          Close
+        </Button>
+      </Modal.Footer>
     </Modal>
   );
 };

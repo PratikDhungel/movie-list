@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
 import MovieCard from '../MovieCard';
@@ -38,7 +38,7 @@ test('Should render the dropdown container in the Movie Card', () => {
 
 const dummyFunction = () => null;
 
-test('Should display the Director Modal when Director Name is clicked', () => {
+test('Should display the Director Modal when Director Name is clicked', async () => {
   const movieCardComponent = render(<MovieCard {...movieCardTestData} />);
   const movieDirector = movieCardComponent.getByTestId('card-detail-container__director');
 
@@ -51,6 +51,9 @@ test('Should display the Director Modal when Director Name is clicked', () => {
 
   fireEvent.click(movieDirector);
 
-  directorDetails = directorModalComponent.queryByTestId('director-modal__director-text');
-  expect(directorDetails?.textContent).toBe(directorData.info);
+  await waitFor(() => {
+    directorDetails = directorModalComponent.queryByTestId('director-modal__director-text');
+    expect(directorDetails).toBeInTheDocument();
+    expect(directorDetails?.textContent).toBe(directorData.info);
+  });
 });
