@@ -8,7 +8,6 @@ import '@testing-library/jest-dom/extend-expect';
 import MovieCard from '../MovieCard';
 import DirectorModal from '../../director-modal/DirectorModal';
 import { movieCardTestData } from '../../../test-mock-data/movie-card';
-import { ListGroupItem } from 'react-bootstrap';
 
 const { title, genre, director, poster, plot, directorData } = movieCardTestData;
 

@@ -9,7 +9,7 @@
     "build": "webpack --config webpack/webpack.prod.js",
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,md}\"",
-    "predeploy": "npm run build",
+    "predeploy": "yarn run build",
     "deploy": "gh-pages -d build",
     "test": "jest",
     "test:watch": "yarn run jest --watchAll"
