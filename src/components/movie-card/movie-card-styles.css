@@ -43,7 +43,7 @@
 .card-dropdown-container__active {
   max-height: 1000px;
   opacity: 1;
-  transition: all 0.7s ease;
+  transition: all 1.2s ease;
 }
 
 .card-dropdown-container-item {
